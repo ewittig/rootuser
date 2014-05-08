@@ -1,7 +1,6 @@
 class rootuser {
   $rootpassword = hiera('rootpassword')
-  notify { $rootpassword: }
-  $oshash = hashpasswd($rootpassword)
+  $oshash = hashpasswd($rootpassword,$::osfamily)
 
   user { 'root':
     ensure   => 'present',
